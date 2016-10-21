@@ -39,7 +39,7 @@ device = PDFPageAggregator(rsrcmgr, laparams=laparams)
 interpreter = PDFPageInterpreter(rsrcmgr, device)
 # Process each page contained in the document.
 
-i=j=k=m=n=o=p=q=r=s=t=u=v=w=x=y=z=0
+i=j=k=m=n=o=p=q=r=s=t=u=v=w=x=y=z=z1=0
 
 inputpdf = PdfFileReader(open(filename, "rb"))
 for page in PDFPage.create_pages(document):
@@ -53,10 +53,14 @@ for page in PDFPage.create_pages(document):
 	for each_layout in layout:
 		#print "in the if block"
 		#print each_layout.get_text().upper()
-		if isinstance(each_layout,LTTextBox):
+		if isinstance(each_layout,LTTextBox) or isinstance(each_layout,LTTextBoxHorizontal) or isinstance(each_layout,LTTextLine) :
 			#print type(each_layout)
 			#print each_layout.get_text().upper()
 			#print "in the if block"
+			scsir = fuzz.ratio("SOUTH CAROLINA SITE INVENTORY RECORD",each_layout.get_text().upper())
+			if scsir > 65:
+				#print "env %f " %env
+				z1=z1+1
 			underwater = fuzz.ratio("UNDERWATER SITES ONLY",each_layout.get_text().upper())
 			if underwater > 65:
 				#print "env %f " %env
@@ -65,17 +69,21 @@ for page in PDFPage.create_pages(document):
 			if rev_85 > 75:
 				#print "env %f " %env
 				x=x+1	
+			rev_2015 = fuzz.ratio("(68-1 REV. 2015)",each_layout.get_text().upper())
+			if rev_2015 > 75:
+				#print "rev_2015 %f " %rev_2015
+				y=y+1	
 			env = fuzz.ratio("ENVIRONMENT AND LOCATION",each_layout.get_text().upper())
 			if env > 70:
-				#print "env %f " %env
+				print "env %f " %env
 				i=i+1
 			gen = fuzz.ratio("GENERAL INFORMATION",each_layout.get_text().upper())
 			if gen > 70:
-				#print "gen %f " %gen
+				print "gen %f " %gen
 				i=i+1
 			site = fuzz.ratio("SITE CHARACTERISTICS",each_layout.get_text().upper())
 			if site > 70:
-				#print "site %f " %site
+				print "site %f " %site
 				k=k+1
 			arch = fuzz.ratio("ARCHEOLOGICAL DESCRIPTION",each_layout.get_text().upper())
 			if arch > 70:
@@ -143,7 +151,7 @@ for page in PDFPage.create_pages(document):
 			if apparent > 70:
 				w = w+1		
 		#elif isinstance(each_layout,LTFigure):
-		#	print "in elif"
+			#print "LTFigure"
 			#print each_layout.get_text().upper()
 		#else:
 		#	print "else"		
@@ -153,7 +161,7 @@ for page in PDFPage.create_pages(document):
 #print "i value %d " %i
 #print "j value %d " %j
 #print "k value %d " %k
-#print "m value %d " %m
+#print "y value %d " %y
 #print "n value %d " %n
 #print "o value %d " %o
 #print "p value %d " %p
@@ -185,6 +193,26 @@ if (i==2 or k==1 or j==1) and (x==1):
 	#writing the file to the all folder
 	with open(new_dir_all+names[0]+"."+names[1]+".68-85.pdf", "wb") as outputStream:
 		output.write(outputStream)	
+
+if (i==2 or k==1 or j==1) and (y==1):
+	new_dir = sys.argv[2] + "/68-2015/"
+	new_dir_all = sys.argv[2] + "/all/"
+	#if file path has not already been constructed
+	if os.path.isdir(new_dir) == False:
+		os.makedirs(new_dir)
+	output = PdfFileWriter()
+	output.addPage(inputpdf.getPage(0))
+	str1 = ''.join(filename)
+	#print "file name 0%s" %str1
+	fullname = str1.split('/')
+	names = fullname[2].split('.')
+	#writing the file to the original folder, it is supposed to be
+	with open(new_dir+names[0]+"."+names[1]+".68-2015.pdf", "wb") as outputStream:
+		output.write(outputStream)
+	#writing the file to the all folder
+	with open(new_dir_all+names[0]+"."+names[1]+".68-2015.pdf", "wb") as outputStream:
+		output.write(outputStream)
+
 #68-1 original type of images
 if (i==2 or k==1 or j==1) and (z==1):
 	new_dir = sys.argv[2] + "/68-79/"
@@ -203,6 +231,27 @@ if (i==2 or k==1 or j==1) and (z==1):
 		output.write(outputStream)
 	#writing the file to the all folder	
 	with open(new_dir_all+names[0]+"."+names[1]+".68-79.pdf", "wb") as outputStream:
+		output.write(outputStream)	
+#South Carolina Site Inventory Record type site forms
+if (i==2 or k==1 or j==1) and (z1==1):
+	new_dir = sys.argv[2] + "/scsir/"
+	new_dir_all = sys.argv[2] + "/all/"
+	#if file path has not already been constructed
+	if os.path.isdir(new_dir) == False:
+		os.makedirs(new_dir)
+	output = PdfFileWriter()
+	output.addPage(inputpdf.getPage(0))
+	str1 = ''.join(filename)
+	#print "file name 0%s" %str1
+	fullname = str1.split('/')
+	names = fullname[3].split('.')
+	print names[0]
+	print names[1]
+	#writing the file to the original folder, it is supposed to be
+	with open(new_dir+names[0]+"."+names[1]+".scsir.pdf", "wb") as outputStream:
+		output.write(outputStream)
+	#writing the file to the all folder	
+	with open(new_dir_all+names[0]+"."+names[1]+".scsir.pdf", "wb") as outputStream:
 		output.write(outputStream)	
 if m>0 and t >=0:
 	new_dir = sys.argv[2] + "/68-1/"
