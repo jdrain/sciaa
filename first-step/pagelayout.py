@@ -232,27 +232,7 @@ if (i==2 or k==1 or j==1) and (z==1):
 	#writing the file to the all folder	
 	with open(new_dir_all+names[0]+"."+names[1]+".68-79.pdf", "wb") as outputStream:
 		output.write(outputStream)	
-#South Carolina Site Inventory Record type site forms
-if (i==2 or k==1 or j==1) and (z1==1):
-	new_dir = sys.argv[2] + "/scsir/"
-	new_dir_all = sys.argv[2] + "/all/"
-	#if file path has not already been constructed
-	if os.path.isdir(new_dir) == False:
-		os.makedirs(new_dir)
-	output = PdfFileWriter()
-	output.addPage(inputpdf.getPage(0))
-	str1 = ''.join(filename)
-	#print "file name 0%s" %str1
-	fullname = str1.split('/')
-	names = fullname[2].split('.')
-	print names[0]
-	print names[1]
-	#writing the file to the original folder, it is supposed to be
-	with open(new_dir+names[0]+"."+names[1]+".scsir.pdf", "wb") as outputStream:
-		output.write(outputStream)
-	#writing the file to the all folder	
-	with open(new_dir_all+names[0]+"."+names[1]+".scsir.pdf", "wb") as outputStream:
-		output.write(outputStream)	
+
 if m>0 and t >=0:
 	new_dir = sys.argv[2] + "/68-1/"
 	new_dir_all = sys.argv[2] + "/all/"
