@@ -244,7 +244,7 @@ if (i==2 or k==1 or j==1) and (z1==1):
 	str1 = ''.join(filename)
 	#print "file name 0%s" %str1
 	fullname = str1.split('/')
-	names = fullname[3].split('.')
+	names = fullname[2].split('.')
 	print names[0]
 	print names[1]
 	#writing the file to the original folder, it is supposed to be
