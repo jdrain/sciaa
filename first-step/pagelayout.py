@@ -75,15 +75,15 @@ for page in PDFPage.create_pages(document):
 				y=y+1	
 			env = fuzz.ratio("ENVIRONMENT AND LOCATION",each_layout.get_text().upper())
 			if env > 70:
-				print "env %f " %env
+				#print "env %f " %env
 				i=i+1
 			gen = fuzz.ratio("GENERAL INFORMATION",each_layout.get_text().upper())
 			if gen > 70:
-				print "gen %f " %gen
+				#print "gen %f " %gen
 				i=i+1
 			site = fuzz.ratio("SITE CHARACTERISTICS",each_layout.get_text().upper())
 			if site > 70:
-				print "site %f " %site
+				#print "site %f " %site
 				k=k+1
 			arch = fuzz.ratio("ARCHEOLOGICAL DESCRIPTION",each_layout.get_text().upper())
 			if arch > 70:

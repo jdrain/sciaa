@@ -40,8 +40,8 @@ for file_name1 in file_names1:
 		#print file_names2[i]
 		if n3 not in result:
 			print n3 + " : not present...!"
-		else:
-			print n3 + " : present...!"	
+		#else:
+			#print n3 + " : present...!"	
 		
 
 	
