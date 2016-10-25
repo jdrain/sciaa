@@ -5,3 +5,6 @@
 3) Run cleaning.py, with first argument a text file containing input file list "./InputFiles/"and second argument will be a text file containing names of all the files in the "./OutputFiles/all" directory.
 4) Run addingNames.py, This file needs to run only if you find some files which are not recognized by pagelaout.py and needs to be added manually, so file names are to be changed according to their format, so instead of manually doing it, this one will check all the folders and find the names which don't have the extension and add extensions based on the directory it is present in.
 6)Run nextpage.py, which will coppy the second page for the 68-85 type of site form. Second page is only required for only one type of 68-85 type of file, it will only copy for that particular kind of file. 
+
+Note: Some of the pdf's are recognized as LTImage instead of LTTextBox, because of that some of the site forms are not identified and extracted. These site forms have to be manually inserted in to the respective folders.
+LTImage and LTTextBox are objects in pdfminer library, naturally text should be identified as LTTextBox, LTTextLine and images in the pdf as LTImage. But, for some of the pdf files are wholly recognized as LTImage because of which our script is not able to identified the site forms. These problem is more in few counties. 
