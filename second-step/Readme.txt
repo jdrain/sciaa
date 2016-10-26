@@ -1,0 +1,1 @@
+First command will convert the pdf files into tiff. Image magick library is used for conversion. It will iterate through all the different site form folder and convert the individual file in the folder and then remove the individual pdf file. 
