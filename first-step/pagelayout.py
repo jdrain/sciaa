@@ -194,24 +194,24 @@ if (i==2 or k==1 or j==1) and (x==1):
 	with open(new_dir_all+names[0]+"."+names[1]+".68-85.pdf", "wb") as outputStream:
 		output.write(outputStream)	
 
-if (i==2 or k==1 or j==1) and (y==1):
-	new_dir = sys.argv[2] + "/68-2015/"
-	new_dir_all = sys.argv[2] + "/all/"
+#if (i==2 or k==1 or j==1) and (y==1):
+#	new_dir = sys.argv[2] + "/68-2015/"
+#	new_dir_all = sys.argv[2] + "/all/"
 	#if file path has not already been constructed
-	if os.path.isdir(new_dir) == False:
-		os.makedirs(new_dir)
-	output = PdfFileWriter()
-	output.addPage(inputpdf.getPage(0))
-	str1 = ''.join(filename)
+#	if os.path.isdir(new_dir) == False:
+#		os.makedirs(new_dir)
+#	output = PdfFileWriter()
+#	output.addPage(inputpdf.getPage(0))
+#	str1 = ''.join(filename)
 	#print "file name 0%s" %str1
-	fullname = str1.split('/')
-	names = fullname[2].split('.')
+#	fullname = str1.split('/')
+#	names = fullname[2].split('.')
 	#writing the file to the original folder, it is supposed to be
-	with open(new_dir+names[0]+"."+names[1]+".68-2015.pdf", "wb") as outputStream:
-		output.write(outputStream)
+#	with open(new_dir+names[0]+"."+names[1]+".68-2015.pdf", "wb") as outputStream:
+#		output.write(outputStream)
 	#writing the file to the all folder
-	with open(new_dir_all+names[0]+"."+names[1]+".68-2015.pdf", "wb") as outputStream:
-		output.write(outputStream)
+#	with open(new_dir_all+names[0]+"."+names[1]+".68-2015.pdf", "wb") as outputStream:
+#		output.write(outputStream)
 
 #68-1 original type of images
 if (i==2 or k==1 or j==1) and (z==1):
