@@ -30,7 +30,7 @@ RemovingWhiteSpaceAtWordBorder.m
 
 Step 6:
 GeneratingFeatures.m
-	: For each individual word we have segmented, it wil generate feature values, all these feature values are written on to the arff file. For each site form a arff file is created, which contains feature values for all the words of that site form. It takes two arguments, first takes the input path of the words and second takes output path where arff files needs to be created.
+	: For each individual word we have segmented, it wil generate feature values, all these feature values are written on to the arff file. For each site form a arff file is created, which contains feature values for all the words of that site form. It takes two arguments, first takes the input path of the words and second takes output path where arff files needs to be created. Create the Small and Large folders manually inside the Aiken_ARFF folder befor running it.
 
  Running: GeneratingFeatures('C:\Users\akhil\Documents\MATLAB\November\Aiken_Individual_Words\','C:\Users\akhil\Documents\MATLAB\November\Aiken_ARFF\');
 
@@ -43,7 +43,10 @@ SmallImageClassification.java
 
  Running: java SmallImageClassification "C:/Users/akhil/Documents/MATLAB/November/Aiken_ARFF/Small/" "C:/Users/akhil/Documents/MATLAB/November/Aiken_small.arff" "C:/Users/akhil/Documents/MATLAB/November/Aiken/" "C:/Users/akhil/Documents/MATLAB/November/Aiken_Seperated/Small/"
 
-Step 8: 
+Step 8:
+	If other pages of the site forms are also requried, this is the right place to add them. For all the Printed Images get the other pages convert and clean them by using the second stage methods. 
+
+Step 9: 
 OtsuBinarization.m
 	: This will converts the gray scale images into binary images. It takes two arguments, arg1 takes the input path of the gray scale images and arg2 takes the output path where the binarized images needs to be stored. 
 
