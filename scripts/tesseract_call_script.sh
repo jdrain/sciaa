@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #Author: Jason Drain
-#Function: This script will run tesseract on .tiff files in a list of directorie#	   s, which are specified by command line args
+#Function: This script will run tesseract on .tiff files in a list of
+#	   directories, which are specified by command line args
 
 ARGV="$@"
 ARGC="$#"
